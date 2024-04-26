@@ -23,7 +23,7 @@ function swap(nums, i, j) {
 }
 // Usage
 const array = [3, 4, -1, 1];
-const smallestMissing = findSmallestMissingPositive(array);
+const smallestMissing = smallestMissingPositiveInteger(array);
 console.log('Smallest Missing Positive Integer:', smallestMissing);
   
   module.exports = smallestMissingPositiveInteger;
