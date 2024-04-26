@@ -1,20 +1,24 @@
 function longestSubstring(s) {
 
-    var letters = check.split("");
-    var max = 0;
-    var result = [];
-    for (var i = 0; i < letters.length; i++) {
-        var start = i
-        if (result.indexOf(letters[i]) === -1) {
-            result.push(letters[i])
-        } else {
-            i = i - 1
-            result = []
+    let maxLength = 0;
+    let start = 0;
+    let charIndexMap = {};
+
+    for (let end = 0; end < s.length; end++) {
+        if (s[end] in charIndexMap) {
+            // If the character is already in the map, move the start pointer to the next index of the repeated character
+            start = Math.max(start, charIndexMap[s[end]] + 1);
         }
-        if (max === 0 || max < result.length) {
-            max = result.length
-        }
+        // Update the index of the current character
+        charIndexMap[s[end]] = end;
+        // Update the maximum length
+        maxLength = Math.max(maxLength, end - start + 1);
     }
-    return max
+
+    return maxLength;
 }
+
+// Example usage:
+const inputString = "abcabcbb";
+console.log(lengthOfLongestSubstring(inputString)); // Output should be 3
 module.exports = { longestSubstring };
